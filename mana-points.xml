@@ -2,8 +2,8 @@
 <elements>
 	<info>
 		<name>Mana Points</name>
-		<update version="1.0.0">
-			<file name="mana-points.xml" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/main/mana-points.xml" />
+		<update version="1.0.1">
+			<file name="mana-points.xml" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/cursor/mana-points-addon-b38d/mana-points.xml" />
 		</update>
 	</info>
 
@@ -23,6 +23,7 @@
 		<author name="Homebrew" />
 		<setters>
 			<set name="abbreviation">MP</set>
+			<set name="url">https://github.com/DeathgamesMC/Auroura_Builder_Testing</set>
 		</setters>
 	</element>
 

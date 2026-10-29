@@ -3,11 +3,11 @@
 	<info>
 		<name>Mana Points</name>
 		<description>House-rule mana points casting: spellcasters use an MP pool instead of spell slots, with costs and max spell level by caster level.</description>
-		<update version="1.0.0">
-			<file name="mana-points.index" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/main/mana-points.index" />
+		<update version="1.0.1">
+			<file name="mana-points.index" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/cursor/mana-points-addon-b38d/mana-points.index" />
 		</update>
 	</info>
 	<files>
-		<file name="mana-points.xml" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/main/mana-points.xml" />
+		<file name="mana-points.xml" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/cursor/mana-points-addon-b38d/mana-points.xml" />
 	</files>
 </index>
