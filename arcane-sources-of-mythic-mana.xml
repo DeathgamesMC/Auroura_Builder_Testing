@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<elements>
+	<info>
+		<name>Arcane Sources of Mythic Mana</name>
+		<update version="1.0.0">
+			<file name="arcane-sources-of-mythic-mana.xml" url="https://REPLACE-WITH-YOUR-HOSTED-URL/arcane-sources-of-mythic-mana.xml" />
+		</update>
+	</info>
+
+	<!-- ============================================================ -->
+	<!-- SOURCE                                                        -->
+	<!-- ============================================================ -->
+	<element name="Arcane Sources of Mythic Mana" type="Source" source="Arcane Sources of Mythic Mana" id="ID_ASMM_SOURCE">
+		<description>
+			<p>Five Wizard Arcane Traditions built for the Mythic Mana system: Elemental Channeler, Void Scholar, Crystal Arcanist, Hemomancer, and Soulweaver.</p>
+		</description>
+		<author name="Homebrew" />
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- 1. ELEMENTAL CHANNELER                                        -->
+	<!-- ============================================================ -->
+	<element name="Elemental Channeler" type="Archetype" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_WIZARD_ELEMENTAL_CHANNELER">
+		<supports>Arcane Tradition</supports>
+		<description>
+			<p class="flavor"><em>“The elements do not obey the wizard — they answer the one who dares to become them.”</em></p>
+			<p>Elemental Channelers bind their arcane studies to one of the primal realms: flame, tide, storm, or stone. They are not generalists. They are living conduits of raw nature.</p>
+		</description>
+		<rules>
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_EFFICIENCY" level="2" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_BODY" level="6" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_OVERLOAD" level="10" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AVATAR" level="14" />
+		</rules>
+	</element>
+
+	<element name="Elemental Efficiency" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_EFFICIENCY">
+		<description>
+			<p>Choose <strong>Fire, Water, Air, or Earth</strong>. This choice cannot be changed.</p>
+			<p>When you cast a spell that deals damage of your chosen element:</p>
+			<ul>
+				<li>Reduce the mana cost by <strong>2</strong> (minimum 1).</li>
+				<li>Add your Intelligence modifier to one damage roll of the spell.</li>
+			</ul>
+			<p>This benefit applies once per turn.</p>
+		</description>
+		<sheet>
+			<description>Chosen element: spells of that element cost 2 less mana (min 1) and add your Intelligence modifier to one damage roll. Once per turn.</description>
+		</sheet>
+		<rules>
+			<select type="Archetype Feature" name="Elemental Affinity" supports="ASMM Elemental Affinity" />
+		</rules>
+	</element>
+
+	<element name="Elemental Affinity: Fire" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AFFINITY_FIRE">
+		<supports>ASMM Elemental Affinity</supports>
+		<description>
+			<p>Your chosen element is <strong>Fire</strong> (fire damage). At 6th level you gain resistance to fire damage.</p>
+		</description>
+		<rules>
+			<grant type="Condition" id="ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_FIRE" level="6" />
+		</rules>
+	</element>
+
+	<element name="Elemental Affinity: Water" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AFFINITY_WATER">
+		<supports>ASMM Elemental Affinity</supports>
+		<description>
+			<p>Your chosen element is <strong>Water</strong> (cold damage). At 6th level you gain resistance to cold damage.</p>
+		</description>
+		<rules>
+			<grant type="Condition" id="ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_COLD" level="6" />
+		</rules>
+	</element>
+
+	<element name="Elemental Affinity: Air" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AFFINITY_AIR">
+		<supports>ASMM Elemental Affinity</supports>
+		<description>
+			<p>Your chosen element is <strong>Air</strong> (lightning damage). At 6th level you gain resistance to lightning damage.</p>
+		</description>
+		<rules>
+			<grant type="Condition" id="ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_LIGHTNING" level="6" />
+		</rules>
+	</element>
+
+	<element name="Elemental Affinity: Earth" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AFFINITY_EARTH">
+		<supports>ASMM Elemental Affinity</supports>
+		<description>
+			<p>Your chosen element is <strong>Earth</strong> (acid damage). At 6th level you gain resistance to acid damage.</p>
+		</description>
+		<rules>
+			<grant type="Condition" id="ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_ACID" level="6" />
+		</rules>
+	</element>
+
+	<element name="Elemental Body" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_BODY">
+		<description>
+			<p>Your body adapts to your chosen element.</p>
+			<ul>
+				<li>You gain resistance to your element’s damage type.</li>
+				<li>When you take damage of your chosen element, you regain mana equal to your proficiency bonus (once per turn).</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Resistance to your chosen element. Regain mana equal to your proficiency bonus when you take that element’s damage (once per turn).</description>
+		</sheet>
+	</element>
+
+	<element name="Elemental Overload" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_OVERLOAD">
+		<description>
+			<p>When you cast a spell dealing your chosen element’s damage type, you may spend <strong>2 additional mana</strong> to amplify it:</p>
+			<ul>
+				<li>Add one additional damage die per spell level.</li>
+			</ul>
+			<p><strong>Limit:</strong> Once per turn.</p>
+		</description>
+		<sheet>
+			<description>Spend 2 extra mana on an element spell to add one extra damage die per spell level. Once per turn.</description>
+		</sheet>
+	</element>
+
+	<element name="Elemental Avatar" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_ELEMENTAL_AVATAR">
+		<description>
+			<p>Once per long rest, you may enter <strong>Avatar State</strong> for 1 minute:</p>
+			<ul>
+				<li>Elemental spells cost <strong>4 less mana</strong>.</li>
+				<li>You ignore resistance to your element.</li>
+				<li>You gain immunity to your element.</li>
+				<li>You regain <strong>5 mana</strong> at the start of each of your turns.</li>
+			</ul>
+			<p>When Avatar State ends, you gain one level of exhaustion.</p>
+		</description>
+		<sheet usage="1/Long Rest" action="Avatar State">
+			<description>For 1 minute: element spells cost 4 less mana, ignore resistance to your element, immunity to your element, regain 5 mana at the start of each turn. Gain 1 level of exhaustion when it ends.</description>
+		</sheet>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- 2. VOID SCHOLAR                                               -->
+	<!-- ============================================================ -->
+	<element name="Void Scholar" type="Archetype" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_WIZARD_VOID_SCHOLAR">
+		<supports>Arcane Tradition</supports>
+		<description>
+			<p class="flavor"><em>“Between realms lies the silence that holds the universe together. I merely pull at the seams.”</em></p>
+			<p>Void Scholars manipulate the space between realities — bending distance, force, and the unseen architecture of existence.</p>
+		</description>
+		<rules>
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SPATIAL_EFFICIENCY" level="2" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SLIP_BETWEEN" level="6" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_RIFT_DRAIN" level="10" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_TEAR_REALITY" level="14" />
+		</rules>
+	</element>
+
+	<element name="Spatial Efficiency" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SPATIAL_EFFICIENCY">
+		<description>
+			<p>When you cast a <strong>Conjuration</strong> spell or a spell that deals <strong>force damage</strong>:</p>
+			<ul>
+				<li>Reduce the mana cost by 1.</li>
+				<li>Increase its range by 30 feet.</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Conjuration and force-damage spells cost 1 less mana and have +30 feet range.</description>
+		</sheet>
+	</element>
+
+	<element name="Slip Between" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SLIP_BETWEEN">
+		<description>
+			<p>You may teleport up to 10 feet as a bonus action a number of times equal to your Intelligence modifier per long rest.</p>
+			<p>When you teleport using a spell, reduce that spell’s mana cost by <strong>3</strong> (once per turn).</p>
+		</description>
+		<sheet action="Bonus Action" usage="Intelligence modifier/Long Rest">
+			<description>Teleport up to 10 feet as a bonus action. When you teleport using a spell, that spell costs 3 less mana (once per turn).</description>
+		</sheet>
+	</element>
+
+	<element name="Rift Drain" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_RIFT_DRAIN">
+		<description>
+			<p>When a creature fails a saving throw against your Conjuration spell:</p>
+			<ul>
+				<li>You regain 1 mana (once per turn).</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Regain 1 mana when a creature fails a save against your Conjuration spell (once per turn).</description>
+		</sheet>
+	</element>
+
+	<element name="Tear Reality" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_TEAR_REALITY">
+		<description>
+			<p>Once per long rest, for 1 minute:</p>
+			<ul>
+				<li>You may teleport up to 30 feet as a bonus action each turn.</li>
+				<li>Conjuration spells cost <strong>4 less mana</strong> (minimum 1).</li>
+				<li>Force spells deal additional damage equal to your wizard level.</li>
+			</ul>
+			<p>When this effect ends, make a DC 15 Constitution saving throw or gain one level of exhaustion.</p>
+		</description>
+		<sheet usage="1/Long Rest" action="Tear Reality">
+			<description>For 1 minute: teleport 30 feet as a bonus action each turn, Conjuration spells cost 4 less mana (min 1), force spells deal extra damage equal to your wizard level. When it ends, DC 15 Constitution save or gain 1 level of exhaustion.</description>
+		</sheet>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- 3. CRYSTAL ARCANIST                                           -->
+	<!-- ============================================================ -->
+	<element name="Crystal Arcanist" type="Archetype" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_WIZARD_CRYSTAL_ARCANIST">
+		<supports>Arcane Tradition</supports>
+		<description>
+			<p class="flavor"><em>“Magic is not chaos. It is light — and I have learned how to bend it.”</em></p>
+			<p>Crystal Arcanists refine magic through arcane crystalline lattices, prioritizing precision over power.</p>
+		</description>
+		<rules>
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_CRYSTAL_PRECISION" level="2" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_STABLE_FOCUS" level="6" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_PERFECT_CALCULATION" level="10" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_RESONANT_CLARITY" level="14" />
+		</rules>
+	</element>
+
+	<element name="Crystal Precision" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_CRYSTAL_PRECISION">
+		<description>
+			<p>Choose <strong>Divination</strong> or <strong>Abjuration</strong>. This choice cannot be changed.</p>
+			<p>When casting a spell of your chosen school:</p>
+			<ul>
+				<li>Reduce the mana cost by <strong>2</strong> (minimum 1).</li>
+				<li>Reroll one die of the spell. You must use the new result.</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Spells of your chosen school cost 2 less mana (min 1) and you may reroll one die of the spell, keeping the new result.</description>
+		</sheet>
+		<rules>
+			<select type="Archetype Feature" name="Crystal School" supports="ASMM Crystal School" />
+		</rules>
+	</element>
+
+	<element name="Crystal School: Divination" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_CRYSTAL_SCHOOL_DIVINATION">
+		<supports>ASMM Crystal School</supports>
+		<description>
+			<p>Your chosen school is <strong>Divination</strong>. Perfect Calculation and Resonant Clarity apply to Divination spells.</p>
+		</description>
+	</element>
+
+	<element name="Crystal School: Abjuration" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_CRYSTAL_SCHOOL_ABJURATION">
+		<supports>ASMM Crystal School</supports>
+		<description>
+			<p>Your chosen school is <strong>Abjuration</strong>. Perfect Calculation and Resonant Clarity apply to Abjuration spells.</p>
+		</description>
+	</element>
+
+	<element name="Stable Focus" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_STABLE_FOCUS">
+		<description>
+			<ul>
+				<li>You have advantage on Constitution saving throws to maintain concentration.</li>
+				<li>While concentrating on a spell, you regain <strong>2 mana</strong> at the start of your turn (once per round).</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Advantage on Constitution saves to maintain concentration. While concentrating, regain 2 mana at the start of your turn (once per round).</description>
+		</sheet>
+	</element>
+
+	<element name="Perfect Calculation" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_PERFECT_CALCULATION">
+		<description>
+			<p>When a creature succeeds on a saving throw against a spell of your chosen school, you may spend <strong>3 mana</strong> to force it to reroll the save. It must use the new result.</p>
+		</description>
+		<sheet>
+			<description>Spend 3 mana to force a creature that succeeded on a save against a spell of your chosen school to reroll it. It must use the new result.</description>
+		</sheet>
+	</element>
+
+	<element name="Resonant Clarity" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_RESONANT_CLARITY">
+		<description>
+			<p>Once per long rest, for 1 minute:</p>
+			<ul>
+				<li>Spells of your chosen school cost <strong>half mana</strong> (rounded up).</li>
+				<li>You cannot roll lower than your Intelligence modifier on spell dice.</li>
+			</ul>
+			<p>After this effect ends, you cannot regain mana from short rests until your next long rest.</p>
+		</description>
+		<sheet usage="1/Long Rest" action="Resonant Clarity">
+			<description>For 1 minute: spells of your chosen school cost half mana (rounded up) and spell dice can’t roll lower than your Intelligence modifier. Afterward, no mana from short rests until your next long rest.</description>
+		</sheet>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- 4. HEMOMANCER                                                 -->
+	<!-- ============================================================ -->
+	<element name="Hemomancer" type="Archetype" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_WIZARD_HEMOMANCER">
+		<supports>Arcane Tradition</supports>
+		<description>
+			<p class="flavor"><em>“Power is paid for in blood. The only question is whose.”</em></p>
+			<p>Hemomancers convert life force into raw magical amplification.</p>
+		</description>
+		<rules>
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_CRIMSON_RESERVOIR" level="2" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SANGUINE_EFFICIENCY" level="6" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SHARED_SUFFERING" level="10" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_CRIMSON_APOTHEOSIS" level="14" />
+		</rules>
+	</element>
+
+	<element name="Crimson Reservoir" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_CRIMSON_RESERVOIR">
+		<description>
+			<p>You gain a pool of <strong>Blood Points</strong> equal to:</p>
+			<p><strong>(2 × Proficiency Bonus) + Intelligence modifier</strong></p>
+			<p>You regain all Blood Points on a long rest.</p>
+			<h5>Gaining Blood Points</h5>
+			<ul>
+				<li><strong>Self-Sacrifice:</strong> Bonus action → Take 1d6 necrotic damage (ignores resistance), gain <strong>3 Blood Points</strong>.</li>
+				<li><strong>Blood Harvest:</strong> When a creature within 30 ft takes damage from your spell, use your reaction to gain <strong>2 Blood Points</strong> (once per turn).</li>
+				<li>If a creature drops to 0 HP from your spell, gain <strong>5 additional Blood Points</strong>.</li>
+			</ul>
+			<p>You cannot exceed your maximum.</p>
+			<h5>Blood Empowerment</h5>
+			<p>When casting a spell, you may spend Blood Points:</p>
+			<ul>
+				<li><strong>1 Point</strong> → Add your Intelligence modifier to one damage roll.</li>
+				<li><strong>2 Points</strong> → Increase spell save DC by +1.</li>
+				<li><strong>3 Points</strong> → Reduce mana cost by <strong>3</strong> (minimum half original cost).</li>
+			</ul>
+		</description>
+		<sheet usage="(2 × Proficiency Bonus) + Intelligence modifier Blood Points/Long Rest" action="Blood Points">
+			<description>Blood Points: (2 × proficiency bonus) + Intelligence modifier, regained on a long rest. Self-Sacrifice (bonus action): take 1d6 necrotic (ignores resistance), gain 3. Blood Harvest (reaction, once per turn): gain 2 when a creature within 30 ft takes damage from your spell. +5 when your spell drops a creature to 0 HP. Spend when casting: 1 = add Int mod to one damage roll; 2 = +1 save DC; 3 = reduce mana cost by 3 (min half original).</description>
+		</sheet>
+	</element>
+
+	<element name="Sanguine Efficiency" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SANGUINE_EFFICIENCY">
+		<description>
+			<p>When below half HP:</p>
+			<ul>
+				<li>Your spells cost <strong>3 less mana</strong> (minimum 1).</li>
+				<li>Once per turn, when you spend Blood Points, gain temporary HP equal to the spell’s level.</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Below half HP: spells cost 3 less mana (min 1). Once per turn, when you spend Blood Points, gain temporary HP equal to the spell’s level.</description>
+		</sheet>
+	</element>
+
+	<element name="Shared Suffering" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SHARED_SUFFERING">
+		<description>
+			<p>When a creature fails a saving throw against your spell:</p>
+			<ul>
+				<li>It takes extra necrotic damage equal to your proficiency bonus.</li>
+				<li>You regain mana equal to half the spell’s level (rounded down, once per turn).</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>When a creature fails a save against your spell: it takes extra necrotic damage equal to your proficiency bonus, and you regain mana equal to half the spell’s level, rounded down (once per turn).</description>
+		</sheet>
+	</element>
+
+	<element name="Crimson Apotheosis" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_CRIMSON_APOTHEOSIS">
+		<description>
+			<p>Once per long rest, for 1 minute:</p>
+			<ul>
+				<li>Regain 2 mana at the start of each turn.</li>
+				<li>Blood Empowerment costs 1 fewer Blood Point (minimum 1).</li>
+				<li>When a creature drops to 0 HP within 30 ft, regain mana equal to its CR (maximum 7).</li>
+			</ul>
+			<p>After this ends:</p>
+			<ul>
+				<li>Gain 1 level of exhaustion.</li>
+				<li>Take necrotic damage equal to twice your wizard level.</li>
+			</ul>
+		</description>
+		<sheet usage="1/Long Rest" action="Crimson Apotheosis">
+			<description>For 1 minute: regain 2 mana at the start of each turn, Blood Empowerment costs 1 fewer Blood Point (min 1), regain mana equal to a creature’s CR (max 7) when it drops to 0 HP within 30 ft. Afterward: 1 level of exhaustion and necrotic damage equal to twice your wizard level.</description>
+		</sheet>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- 5. SOULWEAVER                                                 -->
+	<!-- ============================================================ -->
+	<element name="Soulweaver" type="Archetype" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_WIZARD_SOULWEAVER">
+		<supports>Arcane Tradition</supports>
+		<description>
+			<p class="flavor"><em>“Even death hesitates when I reach for it.”</em></p>
+			<p>Soulweavers are feared across every realm. Where others see death as an ending, they see an opportunity. They reach into the narrow moment between life and afterlife, intercepting souls before judgment claims them. Some bind them as soldiers. Others consume them for power. All walk a razor’s edge between mastery and damnation.</p>
+		</description>
+		<rules>
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SOUL_INTERCEPTION" level="2" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SOUL_CONSUMPTION" level="6" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_GREATER_DOMINION" level="10" />
+			<grant type="Archetype Feature" id="ID_ASMM_ARCHETYPE_FEATURE_SOVEREIGN_OF_THE_DEPARTED" level="14" />
+		</rules>
+	</element>
+
+	<element name="Soul Interception" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SOUL_INTERCEPTION">
+		<description>
+			<p>When a creature dies within <strong>60 feet</strong> of you, you may use your <strong>reaction</strong> to attempt to intercept its soul before it passes on.</p>
+			<p>You may use this feature <strong>once per short rest</strong>.</p>
+			<h5>CR Limit</h5>
+			<p>You may only attempt to bind a creature whose <strong>CR is equal to or less than half your wizard level (rounded down).</strong></p>
+			<h5>Percentile Binding Roll</h5>
+			<p>Roll a <strong>d100</strong>.</p>
+			<p><strong>Soul Interception DC = 50 + (CR × 5)</strong></p>
+			<p>You must roll equal to or higher than the DC to successfully bind the soul.</p>
+			<table>
+				<thead><tr><td>Creature CR</td><td>DC</td></tr></thead>
+				<tbody>
+					<tr><td>1</td><td>55</td></tr>
+					<tr><td>3</td><td>65</td></tr>
+					<tr><td>5</td><td>75</td></tr>
+					<tr><td>8</td><td>90</td></tr>
+					<tr><td>10</td><td>100</td></tr>
+				</tbody>
+			</table>
+			<p>High-CR souls are extraordinarily difficult to bind.</p>
+			<h5>On a Success — Soul Echo</h5>
+			<p>You bind the soul as a <strong>Soul Echo</strong>, which obeys your commands. A Soul Echo:</p>
+			<ul>
+				<li>Has HP equal to half its original maximum.</li>
+				<li>Deals half damage.</li>
+				<li>Cannot cast spells higher than 3rd-level equivalent.</li>
+				<li>Cannot regain mana.</li>
+				<li>Acts immediately after your turn.</li>
+				<li>Lasts until destroyed or until you complete a long rest.</li>
+			</ul>
+			<p>You may maintain a number of Bound Souls equal to your <strong>proficiency bonus</strong>. If you exceed this limit, the oldest bound soul is immediately released.</p>
+			<h5>On a Failure — Vengeful Manifestation</h5>
+			<p>If you fail the percentile roll, the soul is still torn free — but it becomes hostile. It manifests as a <strong>Vengeful Soul</strong>:</p>
+			<ul>
+				<li>Full HP.</li>
+				<li>+2 to attack rolls.</li>
+				<li>Advantage on attack rolls against you.</li>
+				<li>Acts immediately after your turn.</li>
+				<li>Prioritizes attacking you above all others.</li>
+			</ul>
+			<p>It remains until destroyed. This cannot be prevented or dismissed.</p>
+			<h5>Soul Stability</h5>
+			<p>Binding a soul is not the same as controlling it. Each Soul Echo has:</p>
+			<p><strong>Stability = 10 + CR</strong></p>
+			<p>Whenever a Bound Soul makes an attack, casts a spell, is sacrificed, or takes damage equal to 25% or more of its max HP in one hit, you must roll a <strong>d20</strong>.</p>
+			<ul>
+				<li>If the roll is <strong>less than Stability</strong>, it obeys.</li>
+				<li>If the roll is <strong>equal to or greater than Stability</strong>, it breaks free and becomes a Vengeful Soul with full original HP, +2 to attack rolls, and advantage against you.</li>
+			</ul>
+			<p>This roll happens every time it is meaningfully exerted. High CR souls are powerful — but dangerously unstable.</p>
+		</description>
+		<sheet usage="1/Short Rest" action="Reaction">
+			<description>When a creature within 60 ft dies (CR ≤ half your wizard level, rounded down), roll d100 vs DC 50 + (CR × 5). Success: Soul Echo (half HP, half damage, max 3rd-level spells, no mana, acts after your turn, up to proficiency bonus bound; lasts until destroyed or a long rest). Failure: Vengeful Soul (full HP, +2 attack, advantage against you). Stability = 10 + CR; roll d20 when a bound soul attacks, casts, is sacrificed, or takes 25%+ max HP in one hit. Roll below Stability to obey; otherwise it turns Vengeful.</description>
+		</sheet>
+	</element>
+
+	<element name="Soul Consumption" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SOUL_CONSUMPTION">
+		<description>
+			<p>You may destroy one of your Bound Souls as a bonus action to siphon its essence.</p>
+			<p>You regain mana equal to <strong>CR × 2</strong>.</p>
+			<p>You may regain a maximum amount of mana equal to your wizard level per long rest using this feature.</p>
+			<p>A consumed soul is permanently destroyed and cannot be rebound.</p>
+		</description>
+		<sheet action="Bonus Action">
+			<description>Destroy a Bound Soul to regain mana equal to CR × 2 (max mana regained this way per long rest equals your wizard level). The soul cannot be rebound.</description>
+		</sheet>
+	</element>
+
+	<element name="Greater Dominion" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_GREATER_DOMINION">
+		<description>
+			<p>Your authority over the departed strengthens.</p>
+			<ul>
+				<li>Your CR limit becomes <strong>equal to your wizard level</strong>.</li>
+				<li>You may attempt Soul Interception <strong>twice per short rest</strong>.</li>
+				<li>When a Soul Echo deals damage, you regain <strong>1 mana</strong> (once per turn).</li>
+			</ul>
+		</description>
+		<sheet>
+			<description>Soul Interception CR limit equals your wizard level; use it twice per short rest. Regain 1 mana when a Soul Echo deals damage (once per turn).</description>
+		</sheet>
+	</element>
+
+	<element name="Sovereign of the Departed" type="Archetype Feature" source="Arcane Sources of Mythic Mana" id="ID_ASMM_ARCHETYPE_FEATURE_SOVEREIGN_OF_THE_DEPARTED">
+		<description>
+			<p>Once per long rest, you may assert absolute dominion for 1 minute. During this time:</p>
+			<ul>
+				<li>You automatically succeed on one Soul Interception attempt (no percentile roll required).</li>
+				<li>Bound Souls automatically pass Stability checks.</li>
+				<li>When a Soul Echo reduces a creature to 0 HP, you regain mana equal to half that creature’s CR (maximum 5).</li>
+			</ul>
+			<p>When this minute ends, make a <strong>DC 18 Wisdom saving throw</strong>. On a failure, you gain one permanent <strong>Soul Scar</strong> — a narrative mark of spiritual corruption determined by the DM (whispers, divine attention, afterlife hostility, etc.).</p>
+		</description>
+		<sheet usage="1/Long Rest" action="Sovereign of the Departed">
+			<description>For 1 minute: one automatic Soul Interception success, Bound Souls auto-pass Stability checks, regain mana equal to half the CR (max 5) of a creature a Soul Echo reduces to 0 HP. When it ends, DC 18 Wisdom save or gain a permanent Soul Scar (DM determined).</description>
+		</sheet>
+	</element>
+</elements>
