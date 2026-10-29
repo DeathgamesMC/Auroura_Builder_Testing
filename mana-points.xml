@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<elements>
+	<info>
+		<name>Mana Points</name>
+		<update version="1.0.1">
+			<file name="mana-points.xml" url="https://raw.githubusercontent.com/DeathgamesMC/Auroura_Builder_Testing/cursor/mana-points-addon-b38d/mana-points.xml" />
+		</update>
+	</info>
+
+	<!-- ============================================================ -->
+	<!-- SOURCE                                                        -->
+	<!-- House rules: casters spend Mana Points (MP) instead of spell  -->
+	<!-- slots / spell points. Tables match the campaign Mana Points   -->
+	<!-- doc. MP totals by level are subject to DM discretion.         -->
+	<!-- Page 2 of the source doc was not available in the extract;    -->
+	<!-- only page-1 rules are implemented here.                       -->
+	<!-- ============================================================ -->
+	<element name="Mana Points" type="Source" source="Mana Points" id="ID_MP_SOURCE">
+		<description>
+			<p>House-rule casting system: spellcasters use a pool of <strong>mana points (MP)</strong> instead of spell slots. Enable the <strong>Mana Points Casting</strong> character option to add the MP tracker and cost tables to a character.</p>
+			<p><em>Note: mana points per level are subject to change at the DM’s discretion.</em></p>
+		</description>
+		<author name="Homebrew" />
+		<setters>
+			<set name="abbreviation">MP</set>
+			<set name="url">https://github.com/DeathgamesMC/Auroura_Builder_Testing</set>
+		</setters>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- CHARACTER OPTION                                              -->
+	<!-- Enable under Character Options so casters track MP.           -->
+	<!-- Aurora still shows class spell slots; ignore them and spend   -->
+	<!-- from the Mana Points feature usage counter instead.           -->
+	<!-- ============================================================ -->
+	<element name="Mana Points Casting" type="Option" source="Mana Points" id="ID_MP_OPTION_MANA_POINTS_CASTING">
+		<description>
+			<p>Instead of using spell slots, spellcasters use <strong>mana points (MP)</strong>. This gives more liberty over how many spells they can cast at what level.</p>
+			<p>Enable this option to grant the <strong>Mana Points</strong> feature, which tracks your MP pool by caster level and lists mana costs by spell level.</p>
+			<p><strong>Aurora note:</strong> The builder still displays normal spell slots. Treat those as unused; cast by spending mana from the Mana Points tracker on your sheet.</p>
+			<p><em>Mana points per level are subject to change at the DM’s discretion.</em></p>
+			<p><em>Additional rules on page 2 of the house-rules document are not included in this pack (content not available in the extract).</em></p>
+		</description>
+		<setters>
+			<set name="short">Spellcasters use a mana point pool instead of spell slots. Grants the Mana Points tracker and cost tables.</set>
+		</setters>
+		<rules>
+			<grant type="Feat" id="ID_MP_FEAT_MANA_POINTS" />
+		</rules>
+	</element>
+
+	<!-- ============================================================ -->
+	<!-- MANA POINTS TRACKER                                           -->
+	<!-- MP pool by spellcaster level (1–20) and cost by spell level.  -->
+	<!-- Sheet usage scales with character level; for multiclass /     -->
+	<!-- half-casters, adjust manually per DM (page 2 not extracted).  -->
+	<!-- ============================================================ -->
+	<element name="Mana Points" type="Feat" source="Mana Points" id="ID_MP_FEAT_MANA_POINTS">
+		<requirements>ID_MP_OPTION_MANA_POINTS_CASTING</requirements>
+		<description>
+			<p>Instead of using spell slots, you cast spells by spending <strong>mana points (MP)</strong> from your pool. You regain all spent mana points when you finish a long rest. Cantrips do not cost mana.</p>
+			<p>Your spellcaster level determines your maximum mana points and the highest-level spell you can cast, as shown below.</p>
+			<!-- Note: mana points per level are subject to change to DM’s discretion -->
+			<p><em>Note: mana points per level are subject to change at the DM’s discretion.</em></p>
+			<h5>Mana Points by Spellcaster Level</h5>
+			<table>
+				<thead>
+					<tr><td>Spellcaster Level</td><td>Mana Points</td><td>Max Spell Level</td></tr>
+				</thead>
+				<tbody>
+					<tr><td>1</td><td>4</td><td>1st</td></tr>
+					<tr><td>2</td><td>6</td><td>1st</td></tr>
+					<tr><td>3</td><td>14</td><td>2nd</td></tr>
+					<tr><td>4</td><td>17</td><td>2nd</td></tr>
+					<tr><td>5</td><td>27</td><td>3rd</td></tr>
+					<tr><td>6</td><td>32</td><td>3rd</td></tr>
+					<tr><td>7</td><td>38</td><td>4th</td></tr>
+					<tr><td>8</td><td>44</td><td>4th</td></tr>
+					<tr><td>9</td><td>57</td><td>5th</td></tr>
+					<tr><td>10</td><td>64</td><td>5th</td></tr>
+					<tr><td>11</td><td>73</td><td>6th</td></tr>
+					<tr><td>12</td><td>73</td><td>6th</td></tr>
+					<tr><td>13</td><td>83</td><td>7th</td></tr>
+					<tr><td>14</td><td>83</td><td>7th</td></tr>
+					<tr><td>15</td><td>94</td><td>8th</td></tr>
+					<tr><td>16</td><td>94</td><td>8th</td></tr>
+					<tr><td>17</td><td>107</td><td>9th</td></tr>
+					<tr><td>18</td><td>114</td><td>9th</td></tr>
+					<tr><td>19</td><td>123</td><td>9th</td></tr>
+					<tr><td>20</td><td>133</td><td>9th</td></tr>
+				</tbody>
+			</table>
+			<h5>Mana Cost by Spell Level</h5>
+			<table>
+				<thead>
+					<tr><td>Spell Level</td><td>Mana Cost</td></tr>
+				</thead>
+				<tbody>
+					<tr><td>1</td><td>2</td></tr>
+					<tr><td>2</td><td>3</td></tr>
+					<tr><td>3</td><td>5</td></tr>
+					<tr><td>4</td><td>6</td></tr>
+					<tr><td>5</td><td>7</td></tr>
+					<tr><td>6</td><td>9</td></tr>
+					<tr><td>7</td><td>10</td></tr>
+					<tr><td>8</td><td>11</td></tr>
+					<tr><td>9</td><td>13</td></tr>
+				</tbody>
+			</table>
+			<p>You cannot cast a spell of a level higher than your Max Spell Level, even if you have enough mana remaining.</p>
+			<p><em>Page 2 of the house-rules document (if any further casting rules) is not implemented here.</em></p>
+		</description>
+		<sheet usage="4/Long Rest">
+			<description level="1" usage="4/Long Rest">Mana Points casting (replaces spell slots). Pool: 4 MP. Max spell level: 1st. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="2" usage="6/Long Rest">Mana Points casting (replaces spell slots). Pool: 6 MP. Max spell level: 1st. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="3" usage="14/Long Rest">Mana Points casting (replaces spell slots). Pool: 14 MP. Max spell level: 2nd. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="4" usage="17/Long Rest">Mana Points casting (replaces spell slots). Pool: 17 MP. Max spell level: 2nd. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="5" usage="27/Long Rest">Mana Points casting (replaces spell slots). Pool: 27 MP. Max spell level: 3rd. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="6" usage="32/Long Rest">Mana Points casting (replaces spell slots). Pool: 32 MP. Max spell level: 3rd. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="7" usage="38/Long Rest">Mana Points casting (replaces spell slots). Pool: 38 MP. Max spell level: 4th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="8" usage="44/Long Rest">Mana Points casting (replaces spell slots). Pool: 44 MP. Max spell level: 4th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="9" usage="57/Long Rest">Mana Points casting (replaces spell slots). Pool: 57 MP. Max spell level: 5th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="10" usage="64/Long Rest">Mana Points casting (replaces spell slots). Pool: 64 MP. Max spell level: 5th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="11" usage="73/Long Rest">Mana Points casting (replaces spell slots). Pool: 73 MP. Max spell level: 6th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="12" usage="73/Long Rest">Mana Points casting (replaces spell slots). Pool: 73 MP. Max spell level: 6th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="13" usage="83/Long Rest">Mana Points casting (replaces spell slots). Pool: 83 MP. Max spell level: 7th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="14" usage="83/Long Rest">Mana Points casting (replaces spell slots). Pool: 83 MP. Max spell level: 7th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="15" usage="94/Long Rest">Mana Points casting (replaces spell slots). Pool: 94 MP. Max spell level: 8th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="16" usage="94/Long Rest">Mana Points casting (replaces spell slots). Pool: 94 MP. Max spell level: 8th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="17" usage="107/Long Rest">Mana Points casting (replaces spell slots). Pool: 107 MP. Max spell level: 9th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="18" usage="114/Long Rest">Mana Points casting (replaces spell slots). Pool: 114 MP. Max spell level: 9th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="19" usage="123/Long Rest">Mana Points casting (replaces spell slots). Pool: 123 MP. Max spell level: 9th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+			<description level="20" usage="133/Long Rest">Mana Points casting (replaces spell slots). Pool: 133 MP. Max spell level: 9th. Costs — 1st:2, 2nd:3, 3rd:5, 4th:6, 5th:7, 6th:9, 7th:10, 8th:11, 9th:13. Spend MP to cast; regain all on a long rest. Cantrips free. MP totals subject to DM discretion. Ignore Aurora spell-slot boxes.</description>
+		</sheet>
+	</element>
+</elements>
